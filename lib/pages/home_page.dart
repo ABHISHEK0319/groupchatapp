@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:groupchatapp/helper/helper_function.dart';
 import 'package:groupchatapp/pages/auth/login_page.dart';
@@ -282,9 +281,10 @@ class _HomePageState extends State<HomePage> {
           if (snapshot.data['groups'] != null) {
             if (snapshot.data['groups'].length != 0) {
               return ListView.builder(itemBuilder: (context, index) {
+                int reverseIndex = snapshot.data['groups'].length - index - 1;
                 return GroupTile(
                   userName: snapshot.data['fulName'],
-                  groupId: getId(snapshot.data['groups'][index]),
+                  groupId: getId(snapshot.data['groups'][reverseIndex]),
                   groupName: getName(snapshot.data['groups'][index]),
                 );
               });
