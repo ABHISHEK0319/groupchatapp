@@ -4,24 +4,17 @@ import 'package:groupchatapp/helper/helper_function.dart';
 import 'package:groupchatapp/pages/auth/login_page.dart';
 import 'package:groupchatapp/pages/home_page.dart';
 import 'package:groupchatapp/services/auth_service.dart';
-
 import '../../widgets/widgets.dart';
-
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
-
   @override
   State<RegisterPage> createState() => _RegisterPageState();
 }
-
 class _RegisterPageState extends State<RegisterPage> {
   bool _isLoading = false;
   final formkey = GlobalKey<FormState>();
-  String email = "";
-  String password = "";
-  String fullname = "";
+  String email = ""; String password = ""; String fullname = "";
   AuthServices authService = AuthServices();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

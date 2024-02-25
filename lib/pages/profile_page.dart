@@ -17,6 +17,8 @@ class _ProfilePageState extends State<ProfilePage> {
   AuthServices authServices = AuthServices();
   @override
   Widget build(BuildContext context) {
+    // Size s = MediaQuery.of(context).size;
+    // var sp = MediaQuery.of(context).padding;
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -122,9 +124,10 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
       ),
       body: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 150),
+        //padding:  const EdgeInsets.symmetric(horizontal: 5),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+          //mainAxisAlignment: MainAxisAlignment.spaceAround,
+          // crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Icon(
               Icons.account_circle,
@@ -133,12 +136,16 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
             const SizedBox(height: 15),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 15),
+              padding: const EdgeInsets.all(10.0),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,              
                 children: [
-                  const Text("Full", style: TextStyle(fontSize: 17)),
-                  Text(widget.userName, style: const TextStyle(fontSize: 17)),
+                  const Text(
+                    "Full",
+                    style: TextStyle(fontSize: 17),
+                    textAlign: TextAlign.left,
+                  ),
+                  Text(widget.userName, style: const TextStyle(fontSize: 17),  textAlign: TextAlign.right,),
                 ],
               ),
             ),
@@ -146,12 +153,15 @@ class _ProfilePageState extends State<ProfilePage> {
             // const Divider(
             //   height: 20,
             // ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text("Email", style: TextStyle(fontSize: 17)),
-                Text(widget.email, style: const TextStyle(fontSize: 17)),
-              ],
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Row(
+                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text("Email", style: TextStyle(fontSize: 17)),
+                  Text(widget.email, style: const TextStyle(fontSize: 17)),
+                ],
+              ),
             ),
           ],
         ),

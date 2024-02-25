@@ -242,7 +242,8 @@ class _HomePageState extends State<HomePage> {
                   },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Theme.of(context).primaryColor),
-                  child: const Text("CANCEL"),
+                  child: const Text("CANCEL",
+                      style: TextStyle(color: Colors.white)),
                 ),
                 ElevatedButton(
                   onPressed: () async {
@@ -264,7 +265,8 @@ class _HomePageState extends State<HomePage> {
                   },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Theme.of(context).primaryColor),
-                  child: const Text("CREATE"),
+                  child: const Text("CREATE",
+                      style: TextStyle(color: Colors.white)),
                 ),
               ],
             );
@@ -280,14 +282,17 @@ class _HomePageState extends State<HomePage> {
         if (snapshot.hasData) {
           if (snapshot.data['groups'] != null) {
             if (snapshot.data['groups'].length != 0) {
-              return ListView.builder(itemBuilder: (context, index) {
-                int reverseIndex = snapshot.data['groups'].length - index - 1;
-                return GroupTile(
-                  userName: snapshot.data['fulName'],
-                  groupId: getId(snapshot.data['groups'][reverseIndex]),
-                  groupName: getName(snapshot.data['groups'][index]),
-                );
-              });
+              return ListView.builder(
+                  itemCount: snapshot.data['groups'].length,
+                  itemBuilder: (context, index) {
+                    int reverseIndex =
+                        snapshot.data['groups'].length - index - 1;
+                    return GroupTile(
+                      groupId: getId(snapshot.data['groups'][reverseIndex]),
+                      groupName: getName(snapshot.data['groups'][reverseIndex]),
+                      userName: snapshot.data['fullName'],
+                    );
+                  });
             } else {
               return noGroupWidget();
             }
